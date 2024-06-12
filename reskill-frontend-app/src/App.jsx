@@ -31,13 +31,23 @@ function App() {
       <h1>Posts List</h1>
     </div>
       <div className="card">
-      
         <p>
          {posts[0] && <div>{posts[0].title}</div>} 
         </p>
       </div>
       {photos[0] && <img className="centered-image" src={photos[0].url} alt={photos[0].title} />} 
-        
+    <div className="image-body">
+      {posts[0] && <div>{posts[0].body}</div>} 
+    </div>
+    <div className="grid">
+      {photos.slice(1, 10).map((photo, index) => (
+        <div className="grid-item" key={index}>
+          <img src={photo.url} alt={photo.title} />
+          <div>{posts[index + 1] && posts[index + 1].title}</div>
+        </div>
+      ))}
+    </div>
+    
     
     </>
   )
