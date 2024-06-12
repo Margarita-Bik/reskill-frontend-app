@@ -39,6 +39,10 @@ function App() {
     <div className="image-body">
       {posts[0] && <div>{posts[0].body}</div>} 
     </div>
+    <div className="random-images">
+      {photos[11] && <img src={photos[1].url} alt={photos[11].title} />}
+      {photos[12] && <img src={photos[2].url} alt={photos[12].title} />}
+    </div>
     <div className="grid">
       {photos.slice(1, 10).map((photo, index) => (
         <div className="grid-item" key={index}>
