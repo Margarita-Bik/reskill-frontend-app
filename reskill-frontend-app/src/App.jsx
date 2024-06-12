@@ -1,33 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react'
+import './App.scss'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [posts, setPosts] = useState([]);
+  const [photos, setPhotos] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(data => setPosts(data));
+
+    fetch('https://jsonplaceholder.typicode.com/photos')
+      .then(response => response.json())
+      .then(data => setPhotos(data));
+  }, []);
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="banner">
+      <div className="site-name">Site Name</div>
+      <div className="tabs">
+        <div>Tab 1</div>
+        <div>Tab 2</div>
+        <div>Tab 3</div>
       </div>
-      <h1>Vite + React</h1>
+      <button className="search-button">Button</button>
+    </div>
+    <div className="title">
+      <h1>Posts List</h1>
+    </div>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+      
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+         {posts[0] && <div>{posts[0].title}</div>} 
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {photos[0] && <img className="centered-image" src={photos[0].url} alt={photos[0].title} />} 
+        
+    
     </>
   )
 }

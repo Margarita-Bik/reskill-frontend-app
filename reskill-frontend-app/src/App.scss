@@ -1,0 +1,46 @@
+.banner {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: fit-content;
+  margin-top: 5%;
+  padding-bottom: 5%;
+ 
+
+
+  .site-name {
+    position: absolute;
+    left: 5%;
+    
+  }
+
+  .tabs {
+    position: absolute;
+    right: 10%; 
+    margin-top: 0.5%;
+
+    div {
+      display: inline-block;
+      margin-right: 20px; 
+    }
+  }
+
+  .search-button {
+    position: absolute;
+    right: 1%;
+    
+  }
+}
+
+.title {
+    position: relative;
+    left: 4.5%;
+    
+}
+
+.centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
