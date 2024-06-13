@@ -8,10 +8,7 @@ function Home() {
     useEffect(() => {
       fetch("https://jsonplaceholder.typicode.com/posts")
         .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-            setPosts(data);
-        });
+        .then((data) => setPosts(data));
   
       fetch("https://jsonplaceholder.typicode.com/photos")
         .then((response) => response.json())
