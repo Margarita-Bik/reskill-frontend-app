@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-function SinglePost(props) {
+function SinglePost() {
     const { id } = useParams();
     const [post, setPost] = useState([]);
     const [photo, setPhoto] = useState([]);
@@ -16,12 +16,16 @@ function SinglePost(props) {
       }, []);
 
     return (
-        <>
-        <h1>Single Post id={id}</h1>
-        <div>{post.title}</div>
-        <img src={photo.url} alt={photo.title} />
-        <div>{post.body}</div>
-        </>
+      <div className="post-page">
+        <div className="text">
+          <h1>About</h1>
+          <div>{post.title}</div>
+          <div>{post.body}</div>
+        </div>
+        <div className="image">
+          <img src={photo.url} alt={photo.title} />
+        </div>
+      </div>
     );
 }
 
