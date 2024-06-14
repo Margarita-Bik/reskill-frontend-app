@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 function Home() {
     const [posts, setPosts] = useState([]);
     const [photos, setPhotos] = useState([]);
   
     useEffect(() => {
-      fetch("https://jsonplaceholder.typicode.com/posts")
-        .then((response) => response.json())
-        .then((data) => setPosts(data));
-  
-      fetch("https://jsonplaceholder.typicode.com/photos")
-        .then((response) => response.json())
-        .then((data) => setPhotos(data));
+      axios.get('http://127.0.0.1:3000/posts')
+        .then(response => {
+          setPosts(response.data);
+        });
+    
+      axios.get('http://127.0.0.1:3000/photos')
+        .then(response => {
+          setPhotos(response.data);
+        });
     }, []);
   
 

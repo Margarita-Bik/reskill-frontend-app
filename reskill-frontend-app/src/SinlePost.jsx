@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from 'axios';
 
 function SinglePost() {
     const { id } = useParams();
@@ -7,13 +8,16 @@ function SinglePost() {
     const [photo, setPhoto] = useState([]);
 
     useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-          .then((response) => response.json())
-          .then((data) => setPost(data));
-        fetch(`https://jsonplaceholder.typicode.com/photos/${id}`)
-          .then((response) => response.json())
-          .then((data) => setPhoto(data));
-      }, []);
+      axios.get(`http://127.0.0.1:3000/posts/${id}`)
+        .then(response => {
+          setPost(response.data);
+        });
+    
+      axios.get(`http://127.0.0.1:3000/photos/${id}`)
+        .then(response => {
+          setPhoto(response.data);
+        });
+    }, []);
 
     return (
       <div className="post-page">
